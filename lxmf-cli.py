@@ -613,6 +613,8 @@ class LXMFClient:
                 """Called when an LXMF delivery announce is received"""
                 try:
                     if app_data:
+                        if isinstance(app_data, str):
+                            app_data = app_data.encode('utf-8')
                         display_name = LXMF.display_name_from_app_data(app_data)
                         
                         if display_name and isinstance(display_name, str):
@@ -935,6 +937,8 @@ class LXMFClient:
             app_data = RNS.Identity.recall_app_data(hash_bytes)
             
             if app_data:
+                if isinstance(app_data, str):
+                    app_data = app_data.encode('utf-8')
                 # Use LXMF's helper function to extract display name
                 display_name = LXMF.display_name_from_app_data(app_data)
                 if display_name:
@@ -1068,6 +1072,8 @@ class LXMFClient:
                         app_data = RNS.Identity.recall_app_data(destination_hash)
                         
                         if app_data:
+                            if isinstance(app_data, str):
+                                app_data = app_data.encode('utf-8')
                             display_name = LXMF.display_name_from_app_data(app_data)
                             
                             if display_name and isinstance(display_name, str):
